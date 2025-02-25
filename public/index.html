@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shelly power output Display</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <aside class="sidebar active">
+        <div class="sidebarToggle">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                width="24px" fill="#000000">
+                <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+            </svg>
+            </span>
+        </div>
+        <header>
+            <span>
+                <h2>Electricity tariff tracker</h2>
+            </span>
+            <div>This app collects data from your shelly smart power plug and displays
+                the current tariff, power consumption, and electicity cost per hour.
+            </div>
+        </header>
+        <section class="controls">
+            <div>
+                <span>
+                    <h3>Graph options</h3>
+                </span>
+            </div>
+            <div class="buttons">
+                <ul class="menus">
+                    <li>
+                        <button class="menu-toggle active">
+                            <label for="">
+                                <span>Chart data</span>
+                            </label>
+                            <span class="side-svg-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#000000">
+                                    <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="sub-menu active">
+                            <span>
+                                <input type="checkbox" name="graphControl" id="tarifBox">
+                                <label for="tarifBox">Tariff</label>
+                            </span>
+                            <span>
+                                <input type="checkbox" name="graphControl" id="priceBox">
+                                <label for="priceBox">Price</label>
+                            </span>
+                            <span>
+                                <input type="checkbox" name="graphControl" id="CPH" checked>
+                                <label for="CPH">Cost per Hour</label>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="menu-toggle">
+                            <label for="">Refresh rate</label>
+                            <span class="side-svg-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                width="24px" fill="#000000">
+                                <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="sub-menu1 active">
+                            <span>
+                                <input type="range" name="" id="timeframe" min="1" max="60" step="1" value="10">
+                                <label for="">Timeframe: 1s - 1min</label>
+                                <span>Current value: <span class="refreshValue">10s</span></span>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="menu-toggle">
+                            <label for="">Chart type</label>
+                            <span class="side-svg-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                width="24px" fill="#000000">
+                                <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="sub-menu active">
+                            <span>
+                                <input type="checkbox" name="chartType" id="line" checked>
+                                <label for="">line</label>
+                            </span>
+                            <span>
+                                <input type="checkbox" name="chartType" id="step">
+                                <label for="">step</label>
+                            </span>
+                            <span>
+                                <input type="checkbox" name="chartType" id="bar">
+                                <label for="">bar</label>
+                            </span>
+                        </div>
+
+                    </li>
+                    <li>
+                        <button class="menu-toggle">
+                            <label for="">Line color</label>
+                            <span class="side-svg-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                width="24px" fill="#000000">
+                                <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="sub-menu active">
+                            <span>
+                                <input type="color" name="" id="lineColor" value="#2278ff">
+                                <label for="line"> Line 1</label>
+                            </span>
+                            
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <footer>
+            <span>Made by <a href="https://github.com/benjaminplayer">Benjamin</a></span>
+            <span>Powered by Shelly and Node.js</span>
+        </footer>
+    </aside>
+    <div class="grid-container">
+        <div class="canvas-container">
+            <canvas id="chart" width="800" height="800"></canvas>
+        </div>
+    </div>
+    <script src="js/chartLogic.js"></script>
+    <!--<script src="config.js"></script>-->
+</body>
+
+</html>
