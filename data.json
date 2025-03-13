@@ -2,18 +2,18 @@
   "id": 0,
   "source": "SHC",
   "output": true,
-  "apower": 0,
-  "voltage": 240.3,
+  "apower": 13.4,
+  "voltage": 238.2,
   "freq": 50,
-  "current": 0,
+  "current": 0.116,
   "aenergy": {
-    "total": 58.425,
+    "total": 61.827,
     "by_minute": [
-      0,
-      0,
-      0
+      212.62,
+      212.62,
+      425.24
     ],
-    "minute_ts": 1741822680
+    "minute_ts": 1741902660
   },
   "ret_aenergy": {
     "total": 0,
@@ -22,10 +22,10 @@
       0,
       0
     ],
-    "minute_ts": 1741822680
+    "minute_ts": 1741902660
   },
   "temperature": {
-    "tC": 44.9,
-    "tF": 112.7
+    "tC": 42.1,
+    "tF": 107.7
   }
 }

@@ -1,6 +1,7 @@
 const canvas = document.querySelector('#chart');
 const ctx = canvas.getContext('2d');
 const dataChangeBtns = document.querySelectorAll(".data-change");
+const startEndInp = document.querySelectorAll('.data-dates');
 let chart;
 let chartTypeButtons = document.getElementsByName('chartType');
 let chartDisplay = document.getElementsByName('chartType');
@@ -67,6 +68,10 @@ function drawGraph(data){
 
             },
             scales: {
+                x:{
+                    type:'logarithmic',
+                },
+
                 y:{
                     min: 0,
                 }
@@ -125,10 +130,21 @@ dataChangeBtns.forEach(btn =>{
 //       Morda dodaj se time restriction da ne bo lih 1000rows fetchalo
 
 async function handleGraphChange(button){
-    let datelimit =[
+    /*let datelimit =[
         '2025-03-12',
         '2025-03-14'
+    ];*/
+
+    let datelimit = [
+        startEndInp[0].value,
+        startEndInp[1].value
     ];
+
+    if(datelimit[0] == '')
+        datelimit[0] = '1970-01-01'
+    
+    if(datelimit[1] == '')
+        datelimit[1] = new Date().toISOString.substring(0,10);
 
     console.log(datelimit);
     console.log("Stringify", JSON.stringify({ datelimit }));
@@ -136,6 +152,7 @@ async function handleGraphChange(button){
     if(button === dataChangeBtns[1]){
         console.log("graphChangeFetch");
         let data = await fetchDatabaseData(datelimit);
+        //drawGraph(data); TODO: Ustavi interval -> zazeni draw z new data, naredi da interval pointa na ta function
         console.log(data);
     }
 }
