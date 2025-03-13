@@ -5,8 +5,8 @@ const fs = require('fs'); // Že vgrajen modul, ga ni treba nalagat
 const dbConfig = {
     host: 'localhost', // IP do baze podatkov, na tekmovanju boste tu verjetno dali 'localhost' al pa '127.0.0.1'
     user: 'root', // Username
-    password: 'Geslo123', // Geslo
-    database: 'shelly', // Ime baze torej ime ko uporabite CREATE DATABASE shelly; -> 'shelly'
+    password: '', // Geslo
+    database: 'shellydata', // Ime baze torej ime ko uporabite CREATE DATABASE shelly; -> 'shelly'
     port: 3306 // mySQL uporablja port 3306. oracle pa 1521. poglejte katerega uporablja ta baza, ki jo boste uporabili
 };
 
@@ -91,7 +91,7 @@ async function calculateCurrentCost() {
 
     //console.log(tariffInfo.ura);
 
-    //saveToDatabase(shellyData, tarifa);
+    saveToDatabase(shellyData, tarifa);
     saveToFile(shellyData);
 
     const powerInKw = shellyData.apower / 1000; // Convert W to kW
@@ -111,6 +111,37 @@ async function calculateCurrentCost() {
     return result;
 }
 
+async function getDataFromDatabase() {
+    try {
+        const connection = await mysql.createConnection(dbConfig);
+        const query = `select * from shellyData;`;
+        const result = await connection.query(query);
+        await connection.end();
+        //console.log(result.slice(0, -1));
+        return result.slice(0,-1); // vrne vse razn zadnje vrstice v arr, saj ta vsebuje desc tabele
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+async function getDataFromDatabase(datelimit) {
+    const connection = await mysql.createConnection(dbConfig);
+    try {
+        const query = `select * from shellyData
+        where mesDate between str_to_date(?,'%Y-%m-%d') and str_to_date(?,'%Y-%m-%d');`;
+        const result = await connection.query(query, datelimit);
+        await connection.end();
+        console.log(result.slice(0, -1));
+        return result.slice(0,-1); // vrne vse razn zadnje vrstice v arr, saj ta vsebuje desc tabele
+    } catch (error) {
+        console.error(error);
+        return null;
+    } finally{
+        await connection.end();
+    }
+}
+
 function saveToFile(data) { // Sharni podatke, prejete iz vticnice v .json file
     try {
         fs.writeFileSync('data.json', JSON.stringify(data, null, 2), 'utf8');
@@ -119,30 +150,18 @@ function saveToFile(data) { // Sharni podatke, prejete iz vticnice v .json file
     }
 }
 
-/*async function saveToDatabase(data, pricePerH) {
+async function saveToDatabase(data, pricePerH) {
     try {
         const connection = await mysql.createConnection(dbConfig);
 
-        const query = `INSERT INTO stats (
-                device_id, source, output, apower, voltage, freq, current, 
-                total_energy, temperature_c
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`
-
-        // CREATE DATABASE shelly;
-        // USE shelly;
-        
-        // CREATE TABLE stats (
-        //     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-        //     apower DOUBLE,
-        //     pricePerH DOUBLE,  -- Avoid using `/` in column names
-        //     dateTime DATETIME     -- Stores date + time (YYYY-MM-DD HH:MM:SS)
-        // );
+        // db: id, apower, €/h, date, socketId,
+        const query = `insert into shellyData (apower, pricePerH, mesDate, socketId)
+        values(?, ?, now() , ?);`;
         
         const values = [ // Baza podatkov naj vsebuje ID, apower, Cena/H, DATUM. ce se kaj portebujete dodatje
-            data.id,
             data.apower,
             pricePerH,
-            data.date,
+            data.id,
         ]; // Nisem siguren, katere podatke ima 'data', zato ce .date ne dela spremenite
 
         await connection.execute(query, values);
@@ -152,8 +171,8 @@ function saveToFile(data) { // Sharni podatke, prejete iz vticnice v .json file
         console.error('Error saving data to the database:', error);
     }
 }
-*/
+
 calculateCurrentCost();
 // Run the data fetch every 10 seconds
 //setInterval(calculateCurrentCost, 10000);  // 10000 milliseconds = 10 seconds
-module.exports = { getTariff, getCurrentPowerUsage, calculateCurrentCost };
+module.exports = { getTariff, getCurrentPowerUsage, calculateCurrentCost, getDataFromDatabase };

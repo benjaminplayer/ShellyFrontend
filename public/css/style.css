@@ -101,6 +101,10 @@ body{
     width: 100%;
 }
 
+.buttons ul, .data-options ul{
+    list-style: none;
+}
+
 .menu-toggle{
     width: 100%;
     height: 2rem;

@@ -36,7 +36,7 @@
             <div class="buttons">
                 <ul class="menus">
                     <li>
-                        <button class="menu-toggle active">
+                        <button class="menu-toggle">
                             <label for="">
                                 <span>Chart data</span>
                             </label>
@@ -47,7 +47,7 @@
                                 </svg>
                             </span>
                         </button>
-                        <div class="sub-menu active">
+                        <div class="sub-menu">
                             <span>
                                 <input type="checkbox" name="graphControl" id="tarifBox">
                                 <label for="tarifBox">Tariff</label>
@@ -72,7 +72,7 @@
                                 </svg>
                             </span>
                         </button>
-                        <div class="sub-menu1 active">
+                        <div class="sub-menu1">
                             <span>
                                 <input type="range" name="" id="timeframe" min="1" max="60" step="1" value="10">
                                 <label for="">Timeframe: 1s - 1min</label>
@@ -90,7 +90,7 @@
                                 </svg>
                             </span>
                         </button>
-                        <div class="sub-menu active">
+                        <div class="sub-menu">
                             <span>
                                 <input type="checkbox" name="chartType" id="line" checked>
                                 <label for="">line</label>
@@ -116,12 +116,47 @@
                                 </svg>
                             </span>
                         </button>
-                        <div class="sub-menu active">
+                        <div class="sub-menu">
                             <span>
                                 <input type="color" name="" id="lineColor" value="#2278ff">
                                 <label for="line"> Line 1</label>
                             </span>
                             
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="data-options">
+                <div>
+                    <span>
+                        <h3>Data Display</h3>
+                    </span>
+                </div>
+                <ul>
+                    <li>
+                        <button class="menu-toggle data-change active">
+                            <label for="">
+                                <span>Show current data</span>
+                            </label>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="menu-toggle data-change">
+                            <label for="">
+                                <span>Show previous data</span>
+                            </label>
+                        </button>
+                        <div class="sub-menu">
+                            <ul class="database-options">
+                                <li>
+                                    <span>Select start date:</span>
+                                    <input type="date" name="" id="data-start-date" class="data-dates">
+                                </li>
+                                <li>
+                                    <span>Select end date:</span>
+                                    <input type="date" name="" id="data-end-date" class="data-dates">
+                                </li>
+                            </ul>
                         </div>
                     </li>
                 </ul>
@@ -138,7 +173,7 @@
         </div>
     </div>
     <script src="js/chartLogic.js"></script>
-    <!--<script src="config.js"></script>-->
+    <script src="js/script.js"></script>
 </body>
 
 </html>
