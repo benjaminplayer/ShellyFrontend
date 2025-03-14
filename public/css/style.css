@@ -61,6 +61,29 @@ body{
     font-family: "Zain";
 }
 
+header{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+header .options-toggle-container{
+    display: flex;
+    justify-content: right;
+    padding-right: 1rem;
+    align-content: baseline;
+    align-items: center;
+}
+
+header .options-toggle-container span{
+    height: 32px;
+    width: 32px;
+}
+
+header .options-toggle-container span svg{
+    height: 32px;
+    width: 32px;
+}
+
 .sidebar{
     background: #eee;
     display: flex;
@@ -168,12 +191,40 @@ body{
     width: 100%;
     height: 100%;
     display: grid;
+    grid-template-rows: 48px 1fr 32px;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 20% 1fr;
 }
 
 .canvas-container{
     align-self: center;
     justify-self: center;
-    width: 800px;
+    width: 80%;
     height: 800px;
     grid-row: 2;
+    border: 1px red solid;
+}
+
+.canvas-container canvas{
+    width: 100%;
+    height: 100%;
+}
+
+footer{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 0 1rem;
+    align-items: center;
+}
+
+footer span:first-child{
+    justify-self: left;
+}
+
+footer span:last-child{
+    grid-column: 3;
+    justify-self: right;
 }
