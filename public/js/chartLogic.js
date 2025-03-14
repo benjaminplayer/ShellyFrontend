@@ -87,14 +87,14 @@ function drawGraph(data){
     }
 }
 
+function drawDatabaseGraph(data){
+
+}
 
 function startInterval(){
     if(intervalId) clearInterval(intervalId);
     intervalId = setInterval(fetchData, (refreshRate*1000));
 }
-
-fetchData();
-startInterval();
 
 timeSlider.addEventListener('input', () =>{
     refreshRate = parseInt(timeSlider.value, 10);
@@ -153,6 +153,14 @@ async function handleGraphChange(button){
         console.log("graphChangeFetch");
         let data = await fetchDatabaseData(datelimit);
         //drawGraph(data); TODO: Ustavi interval -> zazeni draw z new data, naredi da interval pointa na ta function
+        
         console.log(data);
     }
+}
+
+
+// on load strani zacne fetchat liveData iz powerpluga
+window.onload = ()=> {
+    fetchData();
+    startInterval();
 }
