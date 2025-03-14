@@ -1,6 +1,41 @@
 const menuBtns = document.querySelectorAll('.menu-toggle');
-const startEndInp = document.querySelectorAll('.data-dates')
+const startEndInp = document.querySelectorAll('.data-dates');
+const dropDownButton = document.querySelector('.select-btn');
+const dropDownOptions = document.querySelectorAll('.option');
+const dropDownTitleSpan = dropDownButton.children[0];
+
+let selectedOption = '';
+
 console.log(menuBtns);
+
+dropDownButton.addEventListener("click", () =>{
+    dropDownButton.classList.toggle('toggled');
+    dropDownButton.parentNode.children[1].classList.toggle('active');
+});
+
+dropDownOptions.forEach(option => {
+    option.addEventListener("click", (e) =>{
+        console.log(e.target.closest('.option'));
+        let opt = e.target.closest('.option');
+        if(opt.classList.contains('cph')){
+            selectedOption = 'cph';
+            dropDownTitleSpan.innerHTML = opt.children[0].innerHTML;
+        }   
+        else if(opt.classList.contains('apower')){
+            selectedOption = 'apower';
+            dropDownTitleSpan.innerHTML = opt.children[0].innerHTML;
+        }
+        else if(opt.classList.contains('tarrif')){
+            selectedOption = 'tarrif'
+            dropDownTitleSpan.innerHTML = opt.children[0].innerHTML;
+        }
+        else
+            selectedOption = '';
+
+        console.log(selectedOption);
+
+    });
+});
 
 menuBtns.forEach(btn =>{
     if(btn === menuBtns[menuBtns.length-2]){}

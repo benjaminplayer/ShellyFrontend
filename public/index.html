@@ -165,8 +165,51 @@
         </header>
         <main>
             <div></div>
-            <div>
-                <canvas id="chart"></canvas>
+            <div class="content">
+                <div class="chart-container">
+                    <div class="chart-top-menu">
+                        <div class="type-toggle">
+                            <div>
+                                <button>
+                                    <span>Line</span>
+                                </button>
+                            </div>
+                            <div>
+                                <button>
+                                    <span>Step</span>
+                            </button>
+                            </div>
+                            <div>
+                                <button>
+                                    <span>Bar</span>
+                            </button>
+                            </div>
+                        </div>
+                        <div class="data-drpdwn">
+                            <div class="dropdwn-container">
+                                <div class="select-btn">
+                                    <span>Cost per Hour</span>
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                            <path d="M480-360 280-560h400L480-360Z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <ul class="drpdwn-options">
+                                    <li class="option cph">
+                                        <span>Cost per Hour</span></li>
+                                    <li class="option apower">
+                                        <span>Power Consumption</span>
+                                    </li>
+                                    <li class="option tarrif">
+                                        <span>Tarrif</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <canvas id="chart" width="1300" height="600"></canvas>
+                </div>
             </div>
             <!--<aside></aside>
             <div class="canvas-container">
