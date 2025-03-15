@@ -51,10 +51,37 @@
   TODO: 
   Global:
     Style the website
+    Popravi darkmode themes
   Ben:
     Naredi settings dropdown menu with all fuctionalities
 */
 
+:root{
+    --BgColor: #fff;
+    --Layer1-color: #fff;
+
+
+    --FontColor: #000;
+    --BorderColor: #000;
+    --settingSvgColor: #1f1f1f;
+    --darkModeSvgColor: #1f1f1f;
+}
+
+.darkmode{
+    --BgColor: #121212;
+    --FontColor: #fff;
+    --BorderColor: #fff;
+    --settingSvgColor: #E0E0E0;
+    --darkModeSvgColor: #E0E0E0;
+    --Layer1-color: #2B2B2B;
+    --Layer2-color: #303030;
+    --Layer3-color: #343434;
+    --Layer4-color: #383838;
+    --Layer5-color: #3A3A3A;
+    --Layer6-color: #3E3E3E;
+    --Layer7-color: #404040;
+    --Layer8-color: #424242;
+}
 
 *{
     margin: 0;
@@ -69,6 +96,8 @@ html, body{
 
 body{
     font-family: "Zain";
+    background: var(--BgColor);
+    color: var(--FontColor);
 }
 
 .grid-container{
@@ -85,6 +114,7 @@ header{
 }
 
 header .options-toggle-container{
+    position: relative;
     display: flex;
     justify-content: right;
     padding-right: 1rem;
@@ -92,14 +122,87 @@ header .options-toggle-container{
     align-items: center;
 }
 
-header .options-toggle-container span{
+header .options-toggle-container > span svg{
+    fill: var(--settingSvgColor);
+}
+
+header .options-toggle-container > span, header .options-toggle-container > span svg{
     height: 32px;
     width: 32px;
 }
 
-header .options-toggle-container span svg{
-    height: 32px;
-    width: 32px;
+header .options-toggle-container > span svg{
+    transform: rotate(0deg);
+    transition: 200ms ease-in-out;
+}
+
+header .options-toggle-container > span:hover{
+    cursor: pointer;
+}
+
+header .options-toggle-container > span:hover svg{
+    transform: rotate(45deg);
+    transition: 200ms ease-in-out;
+}
+
+header .options-toggle-container.active > span svg{
+    transform: rotate(45deg);
+}
+
+header .options-container{
+    display: none;
+    position: absolute;
+    border: 1px solid;
+    height: 10rem;
+    width: 10rem;
+    top:100%;
+    background: var(--Layer1-color);
+    z-index: 2;
+}
+
+header .options-container.active{
+    display: initial;
+}
+
+header .options-container ul{
+    list-style: none;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 100%;
+    max-height: 100%;
+}
+
+header .options-container ul li{
+    display: flex;
+    align-items: center;
+    padding: 0 .5rem;
+}
+
+header .options-container ul li:hover{
+    cursor: pointer;
+    background: #eee;
+}
+
+header .options-container ul li > div{
+    width: 100%;
+}
+
+header .options-container ul li:first-child > span:first-child{
+    flex-grow: 1;
+}
+
+.light-dark-svg, .light-dark-svg > svg{
+    height: 22px;
+    width: 22px;
+}
+
+.light-dark-svg > svg{
+    fill: var(--darkModeSvgColor);
+}
+
+.github-icon-holder, .github-icon-holder > svg{
+    height: 1rem;
+    width: 1rem;
 }
 
 .sidebar{
@@ -284,12 +387,12 @@ main{
 }
 
 .select-btn > span:last-child > svg{
-    transform: rotate(180deg);
+    transform: rotate(0deg);
     transition: ease 200ms;
 }
 
 .select-btn.toggled > span:last-child > svg{
-    transform: rotate(0deg);
+    transform: rotate(180deg);
     transition: ease 200ms;
 }
 

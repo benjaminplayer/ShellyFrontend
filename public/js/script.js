@@ -3,10 +3,22 @@ const startEndInp = document.querySelectorAll('.data-dates');
 const dropDownButton = document.querySelector('.select-btn');
 const dropDownOptions = document.querySelectorAll('.option');
 const dropDownTitleSpan = dropDownButton.children[0];
+const lightDarkModeSwitch = document.querySelector('.light-dark-toggle');
+const dropdownToggle = document.querySelector('.options-toggle-container').children[0];
+const body = document.querySelector('body');
 
 let selectedOption = '';
 
 console.log(menuBtns);
+
+lightDarkModeSwitch.addEventListener("click", ()=>{
+    body.classList.toggle('darkmode');
+});
+
+dropdownToggle.addEventListener("click", (e) =>{
+    e.target.closest('.options-toggle-container').children[1].classList.toggle('active');
+    e.target.closest('.options-toggle-container').classList.toggle('active');
+});
 
 dropDownButton.addEventListener("click", () =>{
     dropDownButton.classList.toggle('toggled');
