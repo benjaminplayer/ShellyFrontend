@@ -212,9 +212,13 @@ main{
     grid-template-columns: 20% 1fr;
 }
 
-aside{
+.controls{
     border-right: 1px solid #ddd;
     background: var(--Layer1-color);
+}
+
+.controls > div{
+    background: var(--Layer2-color);
 }
 
 .content{
