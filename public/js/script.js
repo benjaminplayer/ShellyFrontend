@@ -44,6 +44,9 @@ dropDownOptions.forEach(option => {
         else
             selectedOption = '';
 
+        dropDownButton.classList.toggle('toggled');
+        dropDownButton.parentNode.children[1].classList.toggle('active');
+
         console.log(selectedOption);
 
     });

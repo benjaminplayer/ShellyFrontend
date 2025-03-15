@@ -57,9 +57,9 @@
 */
 
 :root{
+    /*Bacground layers*/
     --BgColor: #fff;
     --Layer1-color: #fff;
-
 
     --FontColor: #000;
     --BorderColor: #000;
@@ -69,10 +69,6 @@
 
 .darkmode{
     --BgColor: #121212;
-    --FontColor: #fff;
-    --BorderColor: #fff;
-    --settingSvgColor: #E0E0E0;
-    --darkModeSvgColor: #E0E0E0;
     --Layer1-color: #2B2B2B;
     --Layer2-color: #303030;
     --Layer3-color: #343434;
@@ -81,6 +77,11 @@
     --Layer6-color: #3E3E3E;
     --Layer7-color: #404040;
     --Layer8-color: #424242;
+
+    --FontColor: #fff;
+    --BorderColor: #fff;
+    --settingSvgColor: #E0E0E0;
+    --darkModeSvgColor: #E0E0E0;
 }
 
 *{
@@ -114,6 +115,7 @@ header{
 }
 
 header .options-toggle-container{
+    grid-column: 3;
     position: relative;
     display: flex;
     justify-content: right;
@@ -141,12 +143,12 @@ header .options-toggle-container > span:hover{
 }
 
 header .options-toggle-container > span:hover svg{
-    transform: rotate(45deg);
+    transform: rotate(30deg);
     transition: 200ms ease-in-out;
 }
 
 header .options-toggle-container.active > span svg{
-    transform: rotate(45deg);
+    transform: rotate(30deg);
 }
 
 header .options-container{
@@ -205,112 +207,14 @@ header .options-container ul li:first-child > span:first-child{
     width: 1rem;
 }
 
-.sidebar{
-    background: #eee;
-    display: flex;
-    position: fixed;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-    width: 15vw;
-}
-
-.sidebarToggle{
-    position: absolute;
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    left: 100%;
-    top: 30px;
-    border: 1px solid;
-    height: 32px;
-    width: 32px;
-    border-radius: 0 5px 5px 0;
-}
-
-.sidebarToggle span{
-    height: 32px;
-    width: 32px;
-}
-
-.sidebarToggle span svg{
-    height: 32px;
-    width: 32px;
-}
-
-.controls{
-    max-height: 35rem;
-    height: 35rem;
-    width: 100%;
-}
-
-.buttons ul, .data-options ul{
-    list-style: none;
-}
-
-.menu-toggle{
-    width: 100%;
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.menu-toggle label{
-    flex-grow: 1;
-}
-
-.sub-menu, .sub-menu1{
-    display: none;
-}
-
-.menu-toggle .side-svg-container{
-    height: 16px;
-    width: 16px;
-}
-
-.menu-toggle .side-svg-container svg{
-    height: 100%;
-    width: 100%;
-    transform: rotate(-90deg);
-}
-
-.sub-menu.active, .sub-menu1.active{
-    display: flex;
-    flex-direction: column;
-    padding-left: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-.sub-menu.active:last-child > span{
-    height: 2rem;
-    display: flex;
-    align-content: center;
-}
-
-.sub-menu.active:last-child > span > label{
-    display: inline-flex;
-    align-items: center;
-}
-
-.sub-menu1 > span:nth-child(1){
-    display: flex;
-    flex-direction: column;
-}
-
-.sub-menu1.active{
-    padding: 1rem;
-}
-
-.menu-toggle.active .side-svg-container svg{
-    transform: rotate(90deg);
-}
-
 main{
     display: grid;
     grid-template-columns: 20% 1fr;
+}
+
+aside{
+    border-right: 1px solid #ddd;
+    background: var(--Layer1-color);
 }
 
 .content{
@@ -488,7 +392,12 @@ footer span:first-child{
     justify-self: left;
 }
 
-footer span:last-child{
+footer > div{
+    display: flex;
     grid-column: 3;
     justify-self: right;
+    gap: 2px;
+}
+.node-logo{
+    height: 1rem;
 }
