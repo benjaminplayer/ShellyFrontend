@@ -335,18 +335,42 @@ main{
 
 .type-toggle{
     display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 5px;
+    border-radius: 30px;
+    background-color: #ddd;
+    width: 300px;
 }
 
-.type-toggle button{
-    height: 100%;
-    width: 6rem;
-    border-radius: 0;
+.slider{
+    position: absolute;
+    height: 40px;
+    width: 100px;
+    left: 5px;
+    border-radius: 30px;
+    background-color: #fff;
+    transition: left 0.5s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.toggle-btn{
+    width: 100px;
+    z-index: 2;
     border: none;
-    border-right: 1px solid;
+    background: transparent;
+    font-size: 1.5em;
+    font-family: 'Zain';
+    cursor: pointer;
 }
 
-.type-toggle button:hover{
-    cursor: pointer;
+.toggle-btn.active{
+    font-size: 1.8em;
+    transition: font-size 0.5s ease;
+}
+
+.toggle-btn:hover{
+    font-weight: bold;
 }
 
 .data-drpdwn{

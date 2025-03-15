@@ -132,4 +132,21 @@ function validate(){
 
 }
 
+var lineType = "line";
+const lineTypes = ["line","step","bar"];
+
+const slider = document.getElementById("slider");
+const buttons = document.querySelectorAll(".toggle-btn");
+
+function moveSlider(index){
+    const offset = index * 95 + 5; // 100-5+offset - Zaradi box-sizing: broder-box;
+    slider.style.left = offset+"px";
+
+    buttons.forEach((btn, idx) => {
+        btn.classList.toggle("active", idx === index);
+    });
+
+    lineType = lineTypes[index];
+}
+
 // TODO: Naredi graph switch verification

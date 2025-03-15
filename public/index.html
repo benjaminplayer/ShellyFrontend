@@ -197,21 +197,10 @@
                 <div class="chart-container">
                     <div class="chart-top-menu">
                         <div class="type-toggle">
-                            <div>
-                                <button>
-                                    <span>Line</span>
-                                </button>
-                            </div>
-                            <div>
-                                <button>
-                                    <span>Step</span>
-                                </button>
-                            </div>
-                            <div>
-                                <button>
-                                    <span>Bar</span>
-                                </button>
-                            </div>
+                            <div class="slider" id="slider"></div>
+                            <button class="toggle-btn active" onclick="moveSlider(0)">Line</button>
+                            <button class="toggle-btn" onclick="moveSlider(1)">Step</button>
+                            <button class="toggle-btn" onclick="moveSlider(2)">Bar</button>
                         </div>
                         <div class="data-drpdwn">
                             <div class="dropdwn-container">
