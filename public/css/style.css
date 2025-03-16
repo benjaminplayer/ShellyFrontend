@@ -52,20 +52,32 @@
   Global:
     Style the website
     Popravi darkmode themes
-  Ben:
-    Naredi settings dropdown menu with all fuctionalities
+    Fix overlay
 */
 
 :root{
     /*Bacground layers*/
     --BgColor: #fff;
     --Layer1-color: #fff;
+    
+    --color-primary: #034AA6;
+    --color-secondery: #023373;
+    --color-terciary: #0798F2;
 
     --FontColor: #000;
     --BorderColor: #000;
     --settingSvgColor: #1f1f1f;
     --darkModeSvgColor: #1f1f1f;
 }
+
+
+/* Color Theme Swatches in Hex */
+.Wallpaper-An-abstract-blue-geometric-shapes-background-wallpaper-design-1-hex { color: #034AA6; }
+.Wallpaper-An-abstract-blue-geometric-shapes-background-wallpaper-design-2-hex { color: #023373; }
+.Wallpaper-An-abstract-blue-geometric-shapes-background-wallpaper-design-3-hex { color: #0798F2; }
+.Wallpaper-An-abstract-blue-geometric-shapes-background-wallpaper-design-4-hex { color: #07B0F2; }
+.Wallpaper-An-abstract-blue-geometric-shapes-background-wallpaper-design-5-hex { color: #77CFF2; }
+
 
 .darkmode{
     --BgColor: #121212;
@@ -99,6 +111,16 @@ body{
     font-family: "Zain";
     background: var(--BgColor);
     color: var(--FontColor);
+}
+
+.overlay{
+    display: none;
+}
+
+.overlay{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
 }
 
 .grid-container{
@@ -160,6 +182,7 @@ header .options-container{
     top:100%;
     background: var(--Layer1-color);
     z-index: 2;
+    user-select: none; /* Standard syntax */
 }
 
 header .options-container.active{
@@ -219,6 +242,20 @@ main{
 
 .controls > div{
     background: var(--Layer2-color);
+    height: 30%;
+}
+
+.date-select{
+    background: var(--Layer3-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.date-select > button{
+    width: 10rem;
+    height: 2rem;
 }
 
 .content{
@@ -288,6 +325,7 @@ main{
 
 .dropdwn-container{
     position: relative;
+    user-select: none; /* Standard syntax */
 }
 
 .dropdwn-container select{

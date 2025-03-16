@@ -5,14 +5,36 @@ const dropDownOptions = document.querySelectorAll('.option');
 const dropDownTitleSpan = dropDownButton.children[0];
 const lightDarkModeSwitch = document.querySelector('.light-dark-toggle');
 const dropdownToggle = document.querySelector('.options-toggle-container').children[0];
+const githubImageContainer = document.querySelector('.github-icon-holder');
+const nodeImage = document.querySelector('.node-logo');
+const overlay = document.querySelector('.overlay');
 const body = document.querySelector('body');
 
 let selectedOption = '';
 
 console.log(menuBtns);
 
+overlay.addEventListener("click", ()=>{
+    if(dropDownButton.classList.contains('toggled')){
+        dropDownButton.classList.toggle('toggled');
+        dropDownButton.parentNode.children[1].classList.toggle('active');
+    }
+
+    if(dropdownToggle.closest('.options-toggle-container').classList.contains('active')){
+        dropdownToggle.closest('.options-toggle-container').children[1].classList.toggle('active');
+        dropdownToggle.closest('.options-toggle-container').classList.toggle('active');
+    }
+
+});
+
 lightDarkModeSwitch.addEventListener("click", ()=>{
     body.classList.toggle('darkmode');
+
+    if(body.classList.contains('darkmode')){
+        nodeImage.setAttribute('src','icons/nodejsLight.svg');
+    }else
+        nodeImage.setAttribute('src','icons/nodejsDark.svg')
+
 });
 
 dropdownToggle.addEventListener("click", (e) =>{
