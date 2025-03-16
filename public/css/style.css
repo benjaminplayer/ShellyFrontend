@@ -59,7 +59,16 @@
     /*Bacground layers*/
     --BgColor: #fff;
     --Layer1-color: #fff;
-    
+    --Layer2-color: #fff;
+    --Layer3-color: #fff;
+    --Layer4-color: #fff;
+    --Layer5-color: #fff;
+    --Layer6-color: #fff;
+    --Layer7-color: #fff;
+    --Layer8-color: #fff;
+
+    --hover-color: lightgray;
+
     --color-primary: #034AA6;
     --color-secondery: #023373;
     --color-terciary: #0798F2;
@@ -90,6 +99,7 @@
     --Layer7-color: #404040;
     --Layer8-color: #424242;
 
+    --hover-color: #424242;
     --FontColor: #fff;
     --BorderColor: #fff;
     --settingSvgColor: #E0E0E0;
@@ -134,6 +144,7 @@ header{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     border-bottom: 1px solid #ddd;
+    background: var(--Layer1-color);
 }
 
 header .options-toggle-container{
@@ -180,7 +191,7 @@ header .options-container{
     height: 10rem;
     width: 10rem;
     top:100%;
-    background: var(--Layer1-color);
+    background: var(--Layer4-color);
     z-index: 2;
     user-select: none; /* Standard syntax */
 }
@@ -205,7 +216,7 @@ header .options-container ul li{
 
 header .options-container ul li:hover{
     cursor: pointer;
-    background: #eee;
+    background: var(--hover-color);
 }
 
 header .options-container ul li > div{
@@ -241,21 +252,36 @@ main{
 }
 
 .controls > div{
-    background: var(--Layer2-color);
     height: 30%;
 }
 
 .date-select{
-    background: var(--Layer3-color);
+    background: var(--Layer2-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    margin-top: 6rem;
 }
 
 .date-select > button{
     width: 10rem;
-    height: 2rem;
+    height: 2.5rem;
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+.time-select{
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--Layer2-color);
+}
+
+.time-select > div{
+    display: flex;
+    flex-direction: column;
 }
 
 .content{
@@ -348,7 +374,7 @@ main{
 
 .select-btn:hover{
     cursor: pointer;
-    background-color: lightgray;
+    background-color: var(--hover-color);
 }
 
 .select-btn > span:last-child{
@@ -396,7 +422,7 @@ main{
 
 .drpdwn-options .option:hover{
     cursor: pointer;
-    background-color: lightgray;
+    background-color: var(--hover-color);
 }
 
 .drpdwn-options .option:last-child:hover{

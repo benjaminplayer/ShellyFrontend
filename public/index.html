@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shelly power output Display</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/phone.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -69,7 +70,22 @@
                         </button>
                     </div>
                     <div class="time-select">
-
+                        <div>
+                            <span>Start Date</span>
+                            <span>
+                                <label for="">
+                                    <input type="datetime-local" class="start-date">
+                                </label>
+                            </span>
+                        </div>
+                        <div>
+                            <span>End Date</span>
+                            <span>
+                                <label for="">
+                                    <input type="datetime-local" class="end-date">
+                                </label>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -123,7 +139,6 @@
                 </a></span>    
                 <span> and <a href="">Shelly</a></span>
             </div>
-
         </footer>
     </div>
     <!--<script src="js/chartLogic.js"></script> -->
