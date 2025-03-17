@@ -170,8 +170,10 @@ const slider = document.getElementById("slider");
 const buttons = document.querySelectorAll(".toggle-btn");
 
 function moveSlider(index){
-    const offset = index * 95 + 5; // 100-5+offset - Zaradi box-sizing: broder-box;
-    slider.style.left = offset+"px";
+    const offset = index * 50;
+    const offset2 = index * -10 +5;
+
+    slider.style.left = `calc(`+offset+"% + "+offset2+"px)";
 
     buttons.forEach((btn, idx) => {
         btn.classList.toggle("active", idx === index);
@@ -182,6 +184,10 @@ function moveSlider(index){
 
 // TODO: Naredi graph switch verification
 
+//bar, line
+const icons = [`<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="m140-220-60-60 300-300 160 160 284-320 56 56-340 384-160-160-240 240Z"/></svg>`,`<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M160-160v-320h160v320H160Zm240 0v-640h160v640H400Zm240 0v-440h160v440H640Z"/></svg>`];
+//spremeni na 1 k izbrises step
+const toggleBtnText = [buttons[0].innerHTML,buttons[1]];
 function isMobile() {
     return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 }
@@ -192,6 +198,10 @@ if (isMobile()) {
     html.classList.toggle('phone');
     chart.setAttribute('width',350)
     chart.setAttribute('height', 400);
+
+    buttons[0].innerHTML = icons[1];
+    buttons[1].innerHTML = icons[0];
+
 } else {
     console.log("User is on a desktop or tablet.");
 }

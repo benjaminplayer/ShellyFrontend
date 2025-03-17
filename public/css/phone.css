@@ -3,6 +3,10 @@ html.phone{
     width: 100%;
 }
 
+body.phone .grid-container{
+    grid-template-rows: 48px 1fr 48px;
+}
+
 body.phone header{
     grid-template: none;
 }
@@ -13,9 +17,6 @@ body.phone main{
     margin: 2rem 0;
 }
 
-body.phone .type-toggle{
-    display: none;
-}
 
 body.phone .controls{
     display: grid;
@@ -33,6 +34,7 @@ body.phone .controls > div{
     width: 85vw;
     max-width: 85vw;
     background: var(--Layer1-color);
+    margin-top: 3rem;
 }
 
 body.phone .date-select{
@@ -44,6 +46,15 @@ body.phone .date-select{
 
 body.phone .date-select > button{
     width: 100%;
+}
+
+body.phone .type-toggle{
+    width: 100%;
+    max-width: 200px;
+}
+
+body.phone .toggle-btn{
+    width: 50%;
 }
 
 body.phone .time-select{
@@ -85,8 +96,4 @@ body.phone .dropdwn-container{
 
 body.phone .select-btn{
     width: 100%;
-}
-
-body.phone footer{
-    grid-template-columns: 1fr 1fr;
 }
