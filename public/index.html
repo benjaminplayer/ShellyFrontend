@@ -6,156 +6,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shelly power output Display</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/phone.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <aside class="sidebar active">
-        <div class="sidebarToggle">
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                width="24px" fill="#000000">
-                <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
-            </svg>
-            </span>
-        </div>
+    <div class="overlay"></div>
+    <div class="grid-container">
         <header>
-            <span>
-                <h2>Electricity tariff tracker</h2>
-            </span>
-            <div>This app collects data from your shelly smart power plug and displays
-                the current tariff, power consumption, and electicity cost per hour.
+            <div class="options-toggle-container">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#1f1f1f">
+                        <path
+                            d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z" />
+                    </svg>
+                </span>
+                <div class="options-container">
+                    <ul>
+                        <li class="light-dark-toggle">
+                            <span>Light / Dark mode</span>
+                            <span class="light-dark-svg">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#1f1f1f">
+                                    <path
+                                        d="M600-640 480-760l120-120 120 120-120 120Zm200 120-80-80 80-80 80 80-80 80ZM483-80q-84 0-157.5-32t-128-86.5Q143-253 111-326.5T79-484q0-146 93-257.5T409-880q-18 99 11 193.5T520-521q71 71 165.5 100T879-410q-26 144-138 237T483-80Zm0-80q88 0 163-44t118-121q-86-8-163-43.5T463-465q-61-61-97-138t-43-163q-77 43-120.5 118.5T159-484q0 135 94.5 229.5T483-160Zm-20-305Z" />
+                                </svg>
+                            </span>
+                        </li>
+                        <li class="refresh-speed-container">
+                            <div>Refresh speed</div>
+                            <div></div>
+                        </li>
+                        <li>
+                            <a href="https://github.com/benjaminplayer/ShellyFrontend" target="_blank">
+                                <span class="github-icon-holder">
+                                    <svg width="98" height="96" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 96">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
+                                            fill="#24292f" />
+                                    </svg>
+                                </span>
+                                <span>Source code</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </header>
-        <section class="controls">
-            <div>
-                <span>
-                    <h3>Graph options</h3>
-                </span>
-            </div>
-            <div class="buttons">
-                <ul class="menus">
-                    <li>
-                        <button class="menu-toggle">
-                            <label for="">
-                                <span>Chart data</span>
-                            </label>
-                            <span class="side-svg-container">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                    width="24px" fill="#000000">
-                                    <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
-                                </svg>
-                            </span>
-                        </button>
-                        <div class="sub-menu">
-                            <span>
-                                <input type="checkbox" name="graphControl" id="tarifBox">
-                                <label for="tarifBox">Tariff</label>
-                            </span>
-                            <span>
-                                <input type="checkbox" name="graphControl" id="priceBox">
-                                <label for="priceBox">Price</label>
-                            </span>
-                            <span>
-                                <input type="checkbox" name="graphControl" id="CPH" checked>
-                                <label for="CPH">Cost per Hour</label>
-                            </span>
-                        </div>
-                    </li>
-                    <li>
-                        <button class="menu-toggle">
-                            <label for="">Refresh rate</label>
-                            <span class="side-svg-container">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                width="24px" fill="#000000">
-                                <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
-                                </svg>
-                            </span>
-                        </button>
-                        <div class="sub-menu1">
-                            <span>
-                                <input type="range" name="" id="timeframe" min="1" max="60" step="1" value="10">
-                                <label for="">Timeframe: 1s - 1min</label>
-                                <span>Current value: <span class="refreshValue">10s</span></span>
-                            </span>
-                        </div>
-                    </li>
-                    <li>
-                        <button class="menu-toggle">
-                            <label for="">Chart type</label>
-                            <span class="side-svg-container">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                width="24px" fill="#000000">
-                                <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
-                                </svg>
-                            </span>
-                        </button>
-                        <div class="sub-menu">
-                            <span>
-                                <input type="checkbox" name="chartType" id="line" checked>
-                                <label for="">line</label>
-                            </span>
-                            <span>
-                                <input type="checkbox" name="chartType" id="step">
-                                <label for="">step</label>
-                            </span>
-                            <span>
-                                <input type="checkbox" name="chartType" id="bar">
-                                <label for="">bar</label>
-                            </span>
-                        </div>
-
-                    </li>
-                </ul>
-            </div>
-            <div class="data-options">
+        <main>
+            <div class="controls">
                 <div>
-                    <span>
-                        <h3>Data Display</h3>
-                    </span>
-                </div>
-                <ul>
-                    <li>
-                        <button class="menu-toggle data-change active">
-                            <label for="">
-                                <span>Show current data</span>
-                            </label>
+                    <div class="date-select">
+                        <button class="day">
+                            <span>This Day</span>
                         </button>
-                    </li>
-                    <li>
-                        <button class="menu-toggle data-change">
-                            <label for="">
-                                <span>Show previous data</span>
-                            </label>
+                        <button class="week">
+                            <span>This Week</span>
                         </button>
-                        <div class="sub-menu">
-                            <ul class="database-options">
-                                <li>
-                                    <span>Select start date:</span>
-                                    <input type="date" name="" id="data-start-date" class="data-dates">
-                                </li>
-                                <li>
-                                    <span>Select end date:</span>
-                                    <input type="date" name="" id="data-end-date" class="data-dates">
-                                </li>
-                            </ul>
+                        <button class="month">
+                            <span>This Month</span>
+                        </button>
+                        <button class="custom">
+                            <span>Custom</span>
+                        </button>
+                    </div>
+                    <div class="time-select">
+                        <div>
+                            <span>Start Date</span>
+                            <span>
+                                <label for="">
+                                    <input type="datetime-local" class="start-date">
+                                </label>
+                            </span>
                         </div>
-                    </li>
-                </ul>
+                        <div>
+                            <span>End Date</span>
+                            <span>
+                                <label for="">
+                                    <input type="datetime-local" class="end-date">
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+            <div class="content">
+                <div class="chart-container">
+                    <div class="chart-top-menu">
+                        <div class="type-toggle">
+                            <div class="slider" id="slider"></div>
+                            <button class="toggle-btn active" onclick="moveSlider(0)">Line</button>
+                            <button class="toggle-btn" onclick="moveSlider(1)">Step</button>
+                        </div>
+                        <div class="data-drpdwn">
+                            <div class="dropdwn-container">
+                                <div class="select-btn">
+                                    <span>Cost per Hour</span>
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#1f1f1f">
+                                            <path d="M480-360 280-560h400L480-360Z" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <ul class="drpdwn-options">
+                                    <li class="option cph">
+                                        <span>Cost per Hour</span>
+                                    </li>
+                                    <li class="option apower">
+                                        <span>Power Consumption</span>
+                                    </li>
+                                    <li class="option tarrif">
+                                        <span>Tarrif</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <canvas id="chart" width="1300" height="600"></canvas>
+                </div>
+            </div>
+        </main>
         <footer>
-            <span>Made by <a href="https://github.com/benjaminplayer">Benjamin</a>, <a href="https://github.com/BinCho06">Stipe</a></span>
-            <span>Powered by Shelly and Node.js</span>
+            <div>Made by: Benjamin, Stefan, Domen</div>
+            <div>   
+                <span>Powered by:</span>
+                <span><a>
+                    <img src="icons/nodejsDark.svg" alt="" class="node-logo">
+                </a></span>    
+                <span> and <a href="">Shelly</a></span>
+            </div>
         </footer>
-    </aside>
-    <div class="grid-container">
-        <div class="canvas-container">
-            <canvas id="chart" width="800" height="800"></canvas>
-        </div>
     </div>
     <!--<script src="js/chartLogic.js"></script> -->
     <script src="js/script.js"></script>
 </body>
-
 </html>

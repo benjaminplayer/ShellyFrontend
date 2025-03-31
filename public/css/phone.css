@@ -1,0 +1,99 @@
+html.phone{
+    height: 100%;
+    width: 100%;
+}
+
+body.phone .grid-container{
+    grid-template-rows: 48px 1fr 48px;
+}
+
+body.phone header{
+    grid-template: none;
+}
+
+body.phone main{
+    grid-template: none;
+    grid-template-rows: 1fr 1fr;
+    margin: 2rem 0;
+}
+
+
+body.phone .controls{
+    display: grid;
+    justify-content: center;
+    grid-row: 2;
+}
+
+body.phone .controls{
+    background: none;
+}
+
+body.phone .controls > div{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 85vw;
+    max-width: 85vw;
+    background: var(--Layer1-color);
+    margin-top: 3rem;
+}
+
+body.phone .date-select{
+    margin: .5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap:0;
+}
+
+body.phone .date-select > button{
+    width: 100%;
+}
+
+body.phone .type-toggle{
+    width: 100%;
+    max-width: 200px;
+}
+
+body.phone .toggle-btn{
+    width: 50%;
+}
+
+body.phone .time-select{
+    align-items: baseline;
+    margin: 0;
+}
+
+body.phone .time-select > div{
+    flex-direction: row;
+    width: 100%;
+}
+
+body.phone .time-select >div span:first-child{
+    flex-grow: 1;
+}
+
+body.phone .content{
+    grid-row: 1;
+}
+
+body.phone .chart-container{
+    height: 400px;
+    width: 85vw;
+}
+
+body.phone .chart-top-menu{
+    grid-template-columns: 1fr 35%;
+}
+
+body.phone .data-drpdwn{
+    justify-content: initial;
+    width: 100%;
+    grid-column: 2;
+}
+
+body.phone .dropdwn-container{
+    width: 100%;
+}
+
+body.phone .select-btn{
+    width: 100%;
+}
